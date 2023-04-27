@@ -1,35 +1,39 @@
-# AU-SMART Nuxt Application
+# ausmart.aurcc.in
 
-This repository is the source for the Web App located at [ausmart.aurcc.in](https://ausmart.aurcc.in).
-This app is written in [NuxtJs](https://nuxt.com/), a javascript framework.
+This repository is the source for the AU-SMART Web App [ausmart.aurcc.in](https://ausmart.aurcc.in).
+
+## Design
+
+This web app is written using [NuxtJs](https://nuxt.com/) javascript framework and [tailwindcss](https://tailwindcss.com/) with [daisyUI](https://daisyui.com/).
+
+For user authentication, [Keycloak](https://www.keycloak.org/) is used.
+To notify the Dean, a telegram bot called [AURCC bot](https://t.me/aurccbot) is used.
+
+This server runs as [podman](https://podman.io/) container in the domain [ausmart.aurcc.in](https://ausmart.aurcc.in).
+
+## Services
+
+1. AU-SMART - Anna University Students' Monitoring And Reporting Tool. This web application is for students to report staff absence directly to the Dean.
 
 
-## Deployment
+## Getting Started
 
-To deploy the server, clone the repository and create a container image using [Podman](https://podman.io/).
+Clone this repository.
 
 ```bash
-$ podman build -t ausmart .
-... # Build logs
-
+git clone git@gitlab.com:aurcc/ausmart.aurcc.in.git
 ```
 
-Next, run the build image with appropriate environment variables.
+Change the directory and build the container.
 
 ```bash
-$ podman run -d --name ausmart \
-    -e NUXT_KEYCLOAK_REALM_NAME=realm_name \
-    -e NUXT_KEYCLOAK_AUTH_SERVER_URL=kcurl \
-    -e NUXT_KEYCLOAK_CLIENT_ID=kccid \
-    -e NUXT_AUSMART_DOMAIN_URL=ausmarturl \
-    -e NUXT_FASTAPI_SERVER_URL=fasapiurl \
-    -p 80:80
-    ausmart
+cd ausmart.aurcc.in
+podman build -t ausmart .
 ```
 
 ## Environment Variables 
 
-The server needs many environment variables to work well.
+The server needs the following environment variables.
 
 | Name | Description |
 |--------------------------|---------------------------------------------------------------------------------------------|
@@ -39,27 +43,24 @@ The server needs many environment variables to work well.
 | `NUXT_AUSMART_DOMAIN_URL`| URL of this AU-SMART website |
 | `NUXT_FASTAPI_SERVER_URL` | URL of the fastAPI backend server |
 
-## Development
-
-The following sections focus on developing the Nuxt application.
-
-## Setup
-
-Clone the repository [api.aurcc.in](git@gitlab.com:aurcc/api.aurcc.in.git) and install the dependencies mentioned in that project README.md file.
-
-Clone this repository and make sure to install the dependencies:
+Next, run the image with appropriate environment variables.
 
 ```bash
-# npm
-npm install
+$ podman run -d --name ausmart \
+    -e NUXT_KEYCLOAK_REALM_NAME=realm_name \
+    -e NUXT_KEYCLOAK_AUTH_SERVER_URL=kcurl \
+    -e NUXT_KEYCLOAK_CLIENT_ID=kccid \
+    -e NUXT_AUSMART_DOMAIN_URL=ausmarturl \
+    -e NUXT_FASTAPI_SERVER_URL=fasapiurl \
+    -p 9000:3000
+    ausmart
 ```
 
-## Development Server
+## Miscellaneous
 
-Start the development server on http://localhost:3000
-
-```bash
-npm run dev
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Please refer to followint documentation for any references.
+    - [NuxtJs](https://nuxt.com)
+    - [tailwindcss](https://tailwindcss.com/)
+    - [daisyUI](https://daisyui.com/)
+    - [keycloak](https://www.keycloak.org/)
+    - [podman](https://podman.io/)

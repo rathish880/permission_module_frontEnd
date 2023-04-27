@@ -144,7 +144,7 @@ today.value.setDate(today.value.getDate() + 1)
 const to_date = ref(today.value.toISOString().split("T")[0])
 
 const reports = ref([])
-const url = `${runtimeConfig.backendUrl}/ausmart/reports/`
+const url = `${runtimeConfig.backendUrl}/ausmart/reports`
 
 const isDisable = (hour, minute) => {
     const date = new Date()

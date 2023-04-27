@@ -1,4 +1,4 @@
-FROM node:latest
+FROM docker.io/node:latest
 
 ENV NUXT_PUBLIC_KC_REALM_NAME=""
 ENV NUXT_PUBLIC_KC_SERVER_URL=""

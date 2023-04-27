@@ -70,35 +70,35 @@
 
             <section v-else class="flex flex-col gap-8">
                 <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-                    <span v-for="(item, period_num) in periods">
+                    <span v-for="(item, period_num) in    periods   ">
 
                         <button type="button"
                             :class="{ 'btn-active btn-primary text-white': selectedPeriod == item.timing, 'btn-disabled': isDisable(item.hour, item.minute) }"
                             class="btn btn-outline btn-primary  flex flex-row gap-1 sm:w-44" tabindex="-1" role="button"
                             aria-disabled="true" @click="selectedPeriod = item.timing; period = period_num">
 
-                            <span :class="{ 'text-amber-300 dark:text-amber-300': selectedPeriod == item.timing }"
+                            <span :class=" { 'text-amber-300 dark:text-amber-300': selectedPeriod == item.timing } "
                                 class="px-3 font-bold text-amber-600">{{ period_num }}</span>
-                            <span :class="{ 'text-white': selectedPeriod == item.timing }">{{ item.timing }}</span>
+                            <span :class=" { 'text-white': selectedPeriod == item.timing } ">{{ item.timing }}</span>
                         </button>
 
                     </span>
                 </div>
                 <div class="flex justify-center">
-                    <textarea v-model="reason" class="textarea textarea-primary textarea-lg w-full "
-                        :class="{ 'textarea-error': reason == '' & showWarnSymbol }"
+                    <textarea v-model=" reason " class="textarea textarea-primary textarea-lg w-full "
+                        :class=" { 'textarea-error': reason == '' & showWarnSymbol } "
                         placeholder="Enter a valid reason"></textarea>
                 </div>
 
                 <div class="flex justify-end">
-                    <button class="btn btn-active min-w-24 btn-primary text-white" :class="{ 'loading': isLoading }"
-                        @click="post_report()">Submit</button>
+                    <button class="btn btn-active min-w-24 btn-primary text-white" :class=" { 'loading': isLoading } "
+                        @click=" post_report() ">Submit</button>
                 </div>
 
-                <div v-show="showMessage"
+                <div v-show=" showMessage "
                     class="bg-warning text-black rounded-2xl h-12 items-center shadow-lg flex flex-row justify-center gap-2"
-                    :class="{ 'bg-success': !showWarnSymbol }">
-                    <svg v-show="showWarnSymbol" xmlns="http://www.w3.org/2000/svg"
+                    :class=" { 'bg-success': !showWarnSymbol } ">
+                    <svg v-show=" showWarnSymbol " xmlns="http://www.w3.org/2000/svg"
                         class="stroke-current flex-shrink-0 h-6 w-6" fill="none" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
